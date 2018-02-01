@@ -17,4 +17,12 @@ module.exports = function (twigInstance) {
       twigInstance.extendFunction(functionName, func)
     }
   }
+
+
+  const tags = require('./tags');
+  twigInstance.extend(function(Twig) {
+    for (let tagname in tags) {
+      tags[tagname](Twig);
+    }
+  });
 }
